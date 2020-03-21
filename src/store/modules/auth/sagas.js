@@ -1,6 +1,5 @@
 import {Alert} from 'react-native';
 import api from '~/services/api';
-//import history from '~/services/history';
 import {signInSuccess, signFailure} from './actions';
 import {takeLatest, call, put, all, delay} from 'redux-saga/effects';
 
@@ -29,13 +28,10 @@ export function* signInRequest({payload}) {
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
     //delay
-    yield delay(2000);
+    yield delay(1000);
 
     //sucesso
     yield put(signInSuccess(token, user));
-
-    //redicionar pra dashboard
-    //history.push('/dashboard');
   } catch (error) {
     Alert.alert(
       'Falha na autenticação',
@@ -55,9 +51,6 @@ export function* signUpRequest({payload}) {
       email,
       password,
     });
-
-    //login
-    //history.push('/');
   } catch (error) {
     Alert.alert(
       'Falha ao criar conta',
@@ -78,14 +71,8 @@ export function setToken({payload}) {
   }
 }
 
-//logoff
-export function signOut() {
-  //history.push('/');
-}
-
 export default all([
   takeLatest('persist/REHYDRATE', setToken),
   takeLatest('@auth/SIGN_IN_REQUEST', signInRequest),
   takeLatest('@auth/SIGN_UP_REQUEST', signUpRequest),
-  takeLatest('@auth/SIGN_OUT', signOut),
 ]);
