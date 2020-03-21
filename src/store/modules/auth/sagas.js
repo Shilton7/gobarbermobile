@@ -2,7 +2,7 @@ import {Alert} from 'react-native';
 import api from '~/services/api';
 //import history from '~/services/history';
 import {signInSuccess, signFailure} from './actions';
-import {takeLatest, call, put, all} from 'redux-saga/effects';
+import {takeLatest, call, put, all, delay} from 'redux-saga/effects';
 
 //request login
 export function* signInRequest({payload}) {
@@ -28,6 +28,9 @@ export function* signInRequest({payload}) {
     //setando Authorization ao logar
     api.defaults.headers.Authorization = `Bearer ${token}`;
 
+    //delay
+    yield delay(2000);
+
     //sucesso
     yield put(signInSuccess(token, user));
 
@@ -51,7 +54,6 @@ export function* signUpRequest({payload}) {
       name,
       email,
       password,
-      provider: true,
     });
 
     //login
