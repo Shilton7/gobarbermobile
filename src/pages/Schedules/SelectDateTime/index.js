@@ -1,12 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Background from '~/components/Background';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import {TouchableOpacity} from 'react-native';
-
-// import { Container } from './styles';
+import {Container} from './styles';
+import DateInput from '~/components/DateInput';
 
 export default function SelectDateTime() {
-  return <Background />;
+  //date current
+  const [dateCurrent, setDateCurrent] = useState(new Date());
+
+  return (
+    <Background>
+      <Container>
+        <DateInput date={dateCurrent} onChange={setDateCurrent} />
+      </Container>
+    </Background>
+  );
 }
 
 SelectDateTime.navigationOptions = ({navigation}) => ({

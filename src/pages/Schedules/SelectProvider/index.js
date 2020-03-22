@@ -11,11 +11,11 @@ export default function SelectProvider({navigation}) {
 
   useEffect(() => {
     async function loadProviders() {
-      const response = await api.get('providers');
+      const response = await api.get('/providers');
       setProviders(response.data);
     }
     loadProviders();
-  }, [providers]);
+  }, []);
 
   return (
     <Background>
@@ -28,7 +28,7 @@ export default function SelectProvider({navigation}) {
               onPress={() => navigation.navigate('SelectDateTime', {provider})}>
               <Avatar
                 source={{
-                  uri: `https://api.adorable.io/avatars/40/${provider.name}.png`,
+                  uri: `https://api.adorable.io/avatar/40/${provider.name}.png`,
                 }}
               />
               <Name>{provider.name}</Name>
