@@ -5,11 +5,11 @@ import {takeLatest, call, put, all} from 'redux-saga/effects';
 
 export function* updateProfile({payload}) {
   try {
-    const {name, email, avatar_id, ...rest} = payload.data;
+    const {name, email, ...rest} = payload.data;
 
     //unindo 2 objetos
     const profileUser = Object.assign(
-      {name, email, avatar_id},
+      {name, email},
       rest.oldPassword ? rest : {},
     );
 
