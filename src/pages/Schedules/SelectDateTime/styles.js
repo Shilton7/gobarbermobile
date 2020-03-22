@@ -19,7 +19,7 @@ export const Hour = styled(RectButton)`
   flex: 1;
   align-items: center;
   margin: 0 10px 20px;
-  opacity: ${props => (props.enable ? 1 : 0.6)};
+  opacity: ${props => (props.enabled ? 1 : 0.6)};
 `;
 
 export const Title = styled.Text`

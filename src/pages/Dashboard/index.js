@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import {Alert} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Background from '~/components/Background';
 import {withNavigationFocus} from 'react-navigation';
@@ -36,6 +37,7 @@ function Dashboard({isFocused}) {
           : appointment,
       ),
     );
+    Alert.alert('Cancelado', 'Agendamento cancelado com sucesso!');
   }
 
   return (
